@@ -1,4 +1,5 @@
 import 'package:ameisenreichner/constants/colors.dart';
+import 'package:ameisenreichner/constants/values.dart';
 import 'package:flutter/material.dart';
 
 int calcAnts(String number) {
@@ -93,7 +94,7 @@ class _CounterState extends State<Counter> {
                       ),
                       //image
                       Image.asset(
-                        'assets/ant.png',
+                        '${AppValues.assetString}ant.png',
                         width: 200,
                         height: 200,
                       ),

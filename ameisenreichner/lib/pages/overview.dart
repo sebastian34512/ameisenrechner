@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ameisenreichner/constants/colors.dart';
+import 'package:ameisenreichner/constants/values.dart';
 import 'package:ameisenreichner/models/item.dart';
 import 'package:ameisenreichner/pages/counter.dart';
 import 'package:ameisenreichner/utils.dart';
@@ -83,7 +84,7 @@ class _OverviewState extends State<Overview> {
   Future<List<Item>> loadItemsFromJson() async {
     List<Item> items = [];
     String data = await DefaultAssetBundle.of(context)
-        .loadString(path("assets/collection.json"));
+        .loadString("${AppValues.assetString}collection.json");
     final jsonResult = jsonDecode(data);
     for (var item in jsonResult) {
       items.add(Item.fromJson(item));
@@ -102,7 +103,7 @@ class _OverviewState extends State<Overview> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.asset(
-                  path("collection_images/${item.image}"),
+                  "${AppValues.assetString}collection_images/${item.image}",
                   fit: BoxFit.cover,
                 ),
                 Text(

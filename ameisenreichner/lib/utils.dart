@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
 String path(str) {
-  return (!kIsWeb) ? 'assets/$str' : str;
+  return str;
+  //(!kIsWeb) ? 'assets/$str' : str;
 }
