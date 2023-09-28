@@ -1,0 +1,128 @@
+[
+    {
+        "id": "1",
+        "object": "Toaster",
+        "weight": 1.7,
+        "image": "toaster.png"
+    },
+    {
+        "id": "2",
+        "object": "Laptop",
+        "weight": 2.3,
+        "image": "laptop.png"
+    },
+    {
+        "id": "3",
+        "object": "Buch",
+        "weight": 0.7,
+        "image": "book.png"
+    },
+    {
+        "id": "4",
+        "object": "Schuhe",
+        "weight": 1.2,
+        "image": "shoes.png"
+    },
+    {
+        "id": "5",
+        "object": "Flasche",
+        "weight": 0.3,
+        "image": "bottle.png"
+    },
+    {
+        "id": "6",
+        "object": "Brille",
+        "weight": 0.2,
+        "image": "glasses.png"
+    },
+    {
+        "id": "7",
+        "object": "Geldbörse",
+        "weight": 0.25,
+        "image": "wallet.png"
+    },
+    {
+        "id": "8",
+        "object": "Schlüssel",
+        "weight": 0.1,
+        "image": "keys.png"
+    },
+    {
+        "id": "9",
+        "object": "Handy",
+        "weight": 0.3,
+        "image": "phone.png"
+    },
+    {
+        "id": "10",
+        "object": "Kopfhörer",
+        "weight": 0.2,
+        "image": "headphones.png"
+    },
+    {
+        "id": "11",
+        "object": "Ladekabel",
+        "weight": 0.2,
+        "image": "charger.png"
+    },
+    {
+        "id": "12",
+        "object": "Blumentopf",
+        "weight": 1.5,
+        "image": "pot.png"
+    },
+    {
+        "id": "13",
+        "object": "Kaffeemaschine",
+        "weight": 2.5,
+        "image": "coffee.png"
+    },
+    {
+        "id": "14",
+        "object": "Auto",
+        "weight": 1500,
+        "image": "car.png"
+    },
+    {
+        "id": "15",
+        "object": "Fahrrad",
+        "weight": 10,
+        "image": "bike.png"
+    },
+    {
+        "id": "16",
+        "object": "Kühlschrank",
+        "weight": 100,
+        "image": "fridge.png"
+    },
+    {
+        "id": "17",
+        "object": "Tisch",
+        "weight": 20,
+        "image": "table.png"
+    },
+    {
+        "id": "18",
+        "object": "Grischa",
+        "weight": 90,
+        "image": "grischa.png"
+    },
+    {
+        "id": "19",
+        "object": "Kamera",
+        "weight": 0.5,
+        "image": "camera.png"
+    },
+    {
+        "id": "20",
+        "object": "Tasse",
+        "weight": 0.3,
+        "image": "cup.png"
+    },
+    {
+        "id": "21",
+        "object": "Wurstsemmel",
+        "weight": 0.2,
+        "image": "wurstsemmel.png"
+    }
+]

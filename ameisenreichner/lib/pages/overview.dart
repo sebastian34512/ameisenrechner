@@ -6,10 +6,10 @@ class Overview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown.shade50,
-      body: Center(
-        child: Text('Overview'),
-      ),
-    );
+        backgroundColor: Colors.brown.shade50,
+        body: GridView.count(
+          crossAxisCount: 3,
+          children: [],
+        ));
   }
 }
