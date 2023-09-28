@@ -1,6 +1,14 @@
 import 'package:ameisenreichner/constants/colors.dart';
 import 'package:flutter/material.dart';
 
+int calcAnts(String number) {
+  double ants = double.tryParse(number) ?? -1;
+  if (ants == -1) {
+    return 0;
+  }
+  return (1 / 0.0006 * ants).floor();
+}
+
 class Counter extends StatefulWidget {
   const Counter({super.key});
 
@@ -26,14 +34,6 @@ class _CounterState extends State<Counter> {
 
   void _updateText() {
     setState(() {});
-  }
-
-  int calcAnts(String number) {
-    double ants = double.tryParse(number) ?? -1;
-    if (ants == -1) {
-      return 0;
-    }
-    return (1 / 0.0006 * ants).floor();
   }
 
   @override

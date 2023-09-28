@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:ameisenreichner/constants/colors.dart';
 import 'package:ameisenreichner/models/item.dart';
+import 'package:ameisenreichner/pages/counter.dart';
 import 'package:ameisenreichner/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class Overview extends StatefulWidget {
 
 class _OverviewState extends State<Overview> {
   late Future<List<Item>> overviewItems;
+  TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -25,31 +27,55 @@ class _OverviewState extends State<Overview> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.appLightBrown,
-      body: FutureBuilder<List<Item>>(
-        future: overviewItems,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Suche',
               ),
-              itemCount: snapshot.data!.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  child: Image.asset(
-                    path("collection_images/${snapshot.data![index].image}"),
-                    fit: BoxFit.cover,
-                  ),
+              onChanged: searchItem,
+            ),
+          ),
+          Expanded(
+            child: FutureBuilder<List<Item>>(
+              future: overviewItems,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                    ),
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        child: GestureDetector(
+                          onTap: () {
+                            _dialogBuilder(context, snapshot.data![index]);
+                          },
+                          child: Image.asset(
+                            path(
+                                "collection_images/${snapshot.data![index].image}"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return const Center(
+                  child: CircularProgressIndicator(),
                 );
               },
-            );
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -60,9 +86,56 @@ class _OverviewState extends State<Overview> {
         .loadString(path("assets/collection.json"));
     final jsonResult = jsonDecode(data);
     for (var item in jsonResult) {
-      debugPrint(item.toString());
       items.add(Item.fromJson(item));
     }
     return items;
+  }
+
+  Future<void> _dialogBuilder(BuildContext context, Item item) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(item.name),
+          content: Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  path("collection_images/${item.image}"),
+                  fit: BoxFit.cover,
+                ),
+                Text(
+                  "Ein(e) ${item.name} wiegt im Durchschnitt ${item.weight}kg und braucht somit ${calcAnts(item.weight.toString())} Ameisen.",
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          backgroundColor: AppColor.appLightBrown,
+        );
+      },
+    );
+  }
+
+  void searchItem(String query) async {
+    if (query.isEmpty) {
+      setState(() {
+        overviewItems = loadItemsFromJson();
+      });
+      return;
+    }
+    final items = (await overviewItems).where((item) {
+      final nameLower = item.name.toLowerCase();
+      final searchLower = query.toLowerCase();
+
+      return nameLower.contains(searchLower);
+    }).toList();
+
+    setState(() {
+      overviewItems = Future.value(items);
+    });
   }
 }
