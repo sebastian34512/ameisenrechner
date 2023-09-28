@@ -1,3 +1,4 @@
+import 'package:ameisenreichner/constants/colors.dart';
 import 'package:ameisenreichner/pages/challenge.dart';
 import 'package:ameisenreichner/pages/overview.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(_headings[_currentIndex],
             style: const TextStyle(color: Colors.white)),
-        backgroundColor: Colors.brown.shade800,
+        backgroundColor: AppColor.appBrown,
       ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         selectedItemColor: Colors.brown.shade200,
         unselectedItemColor: Colors.green,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.brown.shade800,
+        backgroundColor: AppColor.appBrown,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(

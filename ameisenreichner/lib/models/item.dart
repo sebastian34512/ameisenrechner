@@ -12,8 +12,8 @@ class Item {
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         id: json["id"],
-        name: json["name"],
-        weight: double.parse(json["weight"]),
+        name: json["object"],
+        weight: json["weight"],
         image: json["image"],
       );
 }

@@ -1,4 +1,4 @@
-import 'package:ameisenreichner/assets/icons/ant_icon_icons.dart';
+import 'package:ameisenreichner/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
@@ -39,7 +39,7 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown.shade50,
+      backgroundColor: AppColor.appLightBrown,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -63,15 +63,15 @@ class _CounterState extends State<Counter> {
                 decoration: InputDecoration(
                   labelText: 'Gewicht in Kilogramm',
                   labelStyle: TextStyle(
-                    color: Colors.brown.shade800,
+                    color: AppColor.appBrown,
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: Colors.brown.shade800, width: 2.0),
+                        BorderSide(color: AppColor.appBrown, width: 2.0),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide:
-                        BorderSide(color: Colors.brown.shade800, width: 2.0),
+                        BorderSide(color: AppColor.appBrown, width: 2.0),
                   ),
                 ),
               ),
@@ -91,7 +91,12 @@ class _CounterState extends State<Counter> {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const Icon(AntIcon.cute_ant, size: 100),
+                      //image
+                      Image.asset(
+                        'assets/ant.png',
+                        width: 200,
+                        height: 200,
+                      ),
                     ],
                   )
                 : Container()
