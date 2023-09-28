@@ -43,9 +43,9 @@
     },
     {
         "id": "8",
-        "object": "Schlüssel",
-        "weight": 0.1,
-        "image": "keys.png"
+        "object": "Einkaufswagen",
+        "weight": 15,
+        "image": "shoppingcart.png"
     },
     {
         "id": "9",
@@ -61,9 +61,9 @@
     },
     {
         "id": "11",
-        "object": "Ladekabel",
-        "weight": 0.2,
-        "image": "charger.png"
+        "object": "Gitarre",
+        "weight": 2,
+        "image": "guitar.png"
     },
     {
         "id": "12",
@@ -103,9 +103,9 @@
     },
     {
         "id": "18",
-        "object": "Grischa",
+        "object": "Programmierer",
         "weight": 90,
-        "image": "grischa.png"
+        "image": "programmer.png"
     },
     {
         "id": "19",
@@ -121,8 +121,8 @@
     },
     {
         "id": "21",
-        "object": "Wurstsemmel",
+        "object": "BigMac",
         "weight": 0.2,
-        "image": "wurstsemmel.png"
+        "image": "hamburger.png"
     }
 ]
