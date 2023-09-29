@@ -1,23 +1,39 @@
 import 'package:ameisenreichner/constants/colors.dart';
 import 'package:ameisenreichner/pages/challenge.dart';
 import 'package:ameisenreichner/pages/overview.dart';
+import 'package:ameisenreichner/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'pages/counter.dart';
 import 'pages/info.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _router = GoRouter(initialLocation: '/', routes: [
+    GoRoute(
+      name: 'home',
+      path: '/',
+      builder: (context, state) => MyHomePage(urlPageId: 1),
+    ),
+    GoRoute(
+      name: 'overview',
+      path: '/overview',
+      builder: (context, state) => MyHomePage(urlPageId: 0),
+    ),
+  ]);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      routerConfig: _router,
+      title: 'Ameisenrechner',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -37,12 +53,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  int urlPageId;
+
+  MyHomePage({Key? key, required this.urlPageId}) : super(key: key);
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -67,6 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _currentIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    debugPrint(widget.urlPageId.toString());
+    _currentIndex = widget.urlPageId;
+    super.initState();
   }
 
   @override
