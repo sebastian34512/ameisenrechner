@@ -8,7 +8,8 @@ import 'package:ameisenreichner/utils.dart';
 import 'package:flutter/material.dart';
 
 class Overview extends StatefulWidget {
-  const Overview({super.key});
+  int? itemId;
+  Overview({super.key, this.itemId});
 
   @override
   State<Overview> createState() => _OverviewState();
@@ -22,6 +23,13 @@ class _OverviewState extends State<Overview> {
   void initState() {
     super.initState();
     overviewItems = loadItemsFromJson();
+    debugPrint("itemId: ${widget.itemId}");
+    if (widget.itemId != null) {
+      // Hier wird der Dialog geöffnet, wenn itemId nicht null ist.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _openDialogForItemId(widget.itemId!);
+      });
+    }
   }
 
   @override
@@ -90,6 +98,23 @@ class _OverviewState extends State<Overview> {
       items.add(Item.fromJson(item));
     }
     return items;
+  }
+
+  Future<void> _openDialogForItemId(int itemId) async {
+    // Lade das Item mit der itemId aus den Daten.
+    List<Item> items = await overviewItems;
+    Item? item;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].id == itemId.toString()) {
+        item = items[i];
+        break;
+      }
+    }
+
+    // Öffne den Dialog für das gefundene Item.
+    if (item != null) {
+      _dialogBuilder(context, item);
+    }
   }
 
   Future<void> _dialogBuilder(BuildContext context, Item item) {
