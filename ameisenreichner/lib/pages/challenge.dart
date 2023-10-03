@@ -1,20 +1,13 @@
 import 'package:ameisenreichner/constants/values.dart';
 import 'package:ameisenreichner/models/challengeItem.dart';
 import 'package:ameisenreichner/models/guess.dart';
+import 'package:ameisenreichner/pages/counter.dart';
 import 'package:ameisenreichner/widgets/guessPage.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
 
 import '../widgets/leaderboard.dart';
-
-enum Allowance {
-  allowed,
-  alreadyGuessed,
-  challengeOver,
-  showLeaderboard,
-  error
-}
 
 class Challenge extends StatefulWidget {
   const Challenge({super.key});
@@ -26,7 +19,6 @@ class Challenge extends StatefulWidget {
 class _ChallengeState extends State<Challenge> {
   String deviceId = "";
   ChallengeItem? todaysChallenge;
-  late Future<int> statusCode;
   List<Guess> guesses = [];
   late Future<Widget> finalWidget;
 
@@ -41,7 +33,6 @@ class _ChallengeState extends State<Challenge> {
   @override
   void initState() {
     super.initState();
-    //statusCode = _checkIfGuessAllowed();
     finalWidget = reactToStatusCode();
     loadChallenge();
   }
@@ -131,25 +122,19 @@ class _ChallengeState extends State<Challenge> {
         //Rangliste berechnen
         var response =
             await Dio().get('https://data.ingoapp.at/rate/${deviceId}');
-        //debugPrint(response.data.toString());
         for (var guess in response.data['guesses']) {
           guesses.add(Guess(
               device_id: "",
-              guess: (int.parse(todaysChallenge!.weight.toString()) -
+              guess: (calcAnts(todaysChallenge!.weight.toString()) -
                       int.parse(guess.toString()))
                   .abs()));
         }
         guesses.add(Guess(
             device_id: response.data['deviceId'],
-            guess: (int.parse(todaysChallenge!.weight.toString()) -
+            guess: (calcAnts(todaysChallenge!.weight.toString()) -
                     int.parse(response.data['ownguess'].toString()))
                 .abs()));
         guesses.sort((a, b) => a.guess.compareTo(b.guess));
-        for (var guess in guesses) {
-          debugPrint(guess.device_id.toString());
-          debugPrint(guess.guess.toString());
-        }
-        debugPrint("list end");
         //get index of guess with deviceId
         int place =
             guesses.indexWhere((element) => element.device_id == deviceId);
@@ -201,29 +186,3 @@ class _ChallengeState extends State<Challenge> {
     );
   }
 }
-
-
-
-
-//void addGuessToJson(String filePath, int guess) async {
-//   final assetBundle = DefaultAssetBundle.of(context);
-//   String data = await DefaultAssetBundle.of(context)
-//       .loadString("${AppValues.assetString}dailyguess.json");
-//   final jsonResult = jsonDecode(data);
-
-//   Map<String, dynamic> newGuess = {
-//     'guess_id': jsonResult['guesses'].length + 1,
-//     'device_id': deviceId,
-//     'guess': guess,
-//   };
-
-//   jsonResult['guesses'].add(newGuess);
-
-//   final updatedJsonContent = json.encode(jsonResult);
-
-//   // Die aktualisierten Daten zurück in die Datei schreiben
-//   await assetBundle.load("${AppValues.assetString}dailyguess.json");
-//   final updatedJsonFile =
-//       await assetBundle.loadString("${AppValues.assetString}dailyguess.json");
-//   //await File(filePath).writeAsString(updatedJsonContent);
-// }
