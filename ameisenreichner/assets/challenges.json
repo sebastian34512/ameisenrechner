@@ -1,0 +1,32 @@
+[
+    {
+        "date": "2023-10-02",
+        "object": "Katze",
+        "weight": 5.5,
+        "image": "cat.png"
+    },
+    {
+        "date": "2023-10-03",
+        "object": "Sofa",
+        "weight": 70,
+        "image": "sofa.png"
+    },
+    {
+        "date": "2023-10-04",
+        "object": "Fernseher",
+        "weight": 20,
+        "image": "tv.png"
+    },
+    {
+        "date": "2023-10-05",
+        "object": "Teller voll Nudeln",
+        "weight": 0.5,
+        "image": "pasta.png"
+    },
+    {
+        "date": "2023-10-06",
+        "object": "Flugzeug",
+        "weight": 100000,
+        "image": "plane.png"
+    }
+]

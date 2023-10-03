@@ -1,5 +1,5 @@
 class AppValues {
   AppValues._();
-  static String assetString = "assets/";
-  //"";
+  static String assetString = // "assets/";
+      "";
 }

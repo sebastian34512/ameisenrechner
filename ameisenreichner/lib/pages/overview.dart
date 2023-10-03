@@ -4,12 +4,11 @@ import 'package:ameisenreichner/constants/colors.dart';
 import 'package:ameisenreichner/constants/values.dart';
 import 'package:ameisenreichner/models/item.dart';
 import 'package:ameisenreichner/pages/counter.dart';
-import 'package:ameisenreichner/utils.dart';
 import 'package:flutter/material.dart';
 
 class Overview extends StatefulWidget {
-  int? itemId;
-  Overview({super.key, this.itemId});
+  final int? itemId;
+  const Overview({super.key, this.itemId});
 
   @override
   State<Overview> createState() => _OverviewState();
@@ -67,8 +66,7 @@ class _OverviewState extends State<Overview> {
                             _dialogBuilder(context, snapshot.data![index]);
                           },
                           child: Image.asset(
-                            path(
-                                "collection_images/${snapshot.data![index].image}"),
+                            "${AppValues.assetString}collection_images/${snapshot.data![index].image}",
                             fit: BoxFit.cover,
                           ),
                         ),

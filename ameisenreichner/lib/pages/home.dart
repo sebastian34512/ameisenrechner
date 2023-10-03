@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
 class MyHomePage extends StatefulWidget {
-  int? itemId;
+  final int? itemId;
 
-  MyHomePage({Key? key, this.itemId}) : super(key: key);
+  const MyHomePage({Key? key, this.itemId}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
