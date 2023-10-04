@@ -44,47 +44,38 @@ class _CounterState extends State<Counter> {
       backgroundColor: AppColor.appLightBrown,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                margin: EdgeInsets.only(top: 20),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    "Wie viele",
-                    style: GoogleFonts.inter(
-                      textStyle:
-                          TextStyle(fontSize: 50, fontWeight: FontWeight.w600),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Image.asset(
-                '${AppValues.assetString}ant.png',
-                height: 150,
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
+            Container(
+              margin: EdgeInsets.only(top: 20),
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "braucht es für",
+                  "Wie viele",
                   style: GoogleFonts.inter(
-                    textStyle: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    textStyle:
+                        TextStyle(fontSize: 50, fontWeight: FontWeight.w600),
                   ),
                   textAlign: TextAlign.center,
                 ),
+              ),
+            ),
+            Image.asset(
+              '${AppValues.assetString}ant.png',
+              height: 150,
+            ),
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "braucht es für",
+                style: GoogleFonts.inter(
+                  textStyle: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
