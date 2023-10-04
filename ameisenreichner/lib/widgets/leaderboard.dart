@@ -21,7 +21,7 @@ class Leaderboard extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.brown.shade50,
       body: hasGuessed
-          ? Center(
+          ? SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

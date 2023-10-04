@@ -4,8 +4,9 @@ import 'package:ameisenreichner/models/guess.dart';
 import 'package:ameisenreichner/pages/counter.dart';
 import 'package:ameisenreichner/widgets/guessPage.dart';
 import 'package:flutter/material.dart';
-import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
+import 'package:uuid/uuid.dart';
+import 'dart:html' as html;
 
 import '../widgets/leaderboard.dart';
 
@@ -28,6 +29,7 @@ class _ChallengeState extends State<Challenge> {
     setState(() {
       todaysChallenge = getCurrentChallenge(loadChallengesFromJson(jsonString));
     });
+    debugPrint("challenge loaded");
   }
 
   @override
@@ -40,29 +42,53 @@ class _ChallengeState extends State<Challenge> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _getDeviceId();
+    _getGuidFromLocalStorage();
   }
 
-  Future<void> _getDeviceId() async {
-    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    if (Theme.of(context).platform == TargetPlatform.android) {
-      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+  // Future<void> _getDeviceId() async {
+  //   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  //   if (Theme.of(context).platform == TargetPlatform.android) {
+  //     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+  //     debugPrint("android serialnumber: ${androidInfo.serialNumber}");
+  //     debugPrint("android version: ${androidInfo.version}");
+  //     debugPrint("android fingerprint: ${androidInfo.fingerprint}");
+  //     debugPrint("android data: ${androidInfo.data}");
+  //     debugPrint("android: ${androidInfo}");
+  //     setState(() {
+  //       deviceId = "android";
+  //     });
+  //   } else if (Theme.of(context).platform == TargetPlatform.iOS) {
+  //     IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+  //     setState(() {
+  //       deviceId = "ios";
+  //     });
+  //   } else if (Theme.of(context).platform == TargetPlatform.windows) {
+  //     setState(() {
+  //       deviceId = 'test5'; //'windows_device_id';
+  //     });
+  //   } else {
+  //     // Plattform nicht erkannt
+  //     setState(() {
+  //       deviceId = 'unknown_device';
+  //     });
+  //   }
+
+  //   debugPrint('Device ID: $deviceId');
+  // }
+
+  void _getGuidFromLocalStorage() {
+    final storedGuid = html.window.localStorage['guid'];
+    if (storedGuid != null) {
       setState(() {
-        deviceId = androidInfo.androidId;
-      });
-    } else if (Theme.of(context).platform == TargetPlatform.iOS) {
-      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-      setState(() {
-        deviceId = iosInfo.identifierForVendor;
-      });
-    } else if (Theme.of(context).platform == TargetPlatform.windows) {
-      setState(() {
-        deviceId = 'test5'; //'windows_device_id';
+        deviceId = storedGuid;
       });
     } else {
-      // Plattform nicht erkannt
+      // Wenn keine GUID im localStorage gefunden wurde, generiere eine neue
+      final newGuid = const Uuid().v4();
+      // Speichern Sie die neue GUID im localStorage
+      html.window.localStorage['guid'] = newGuid;
       setState(() {
-        deviceId = 'unknown_device';
+        deviceId = newGuid;
       });
     }
 
