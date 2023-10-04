@@ -1,9 +1,9 @@
 [
     {
         "id": "1",
-        "object": "Toaster",
-        "weight": 1.7,
-        "image": "toaster.png"
+        "object": "Tasse",
+        "weight": 0.3,
+        "image": "cup.png"
     },
     {
         "id": "2",
@@ -13,9 +13,9 @@
     },
     {
         "id": "3",
-        "object": "Buch",
-        "weight": 0.7,
-        "image": "book.png"
+        "object": "Kopfhörer",
+        "weight": 0.2,
+        "image": "headphones.png"
     },
     {
         "id": "4",
@@ -55,9 +55,9 @@
     },
     {
         "id": "10",
-        "object": "Kopfhörer",
-        "weight": 0.2,
-        "image": "headphones.png"
+        "object": "Buch",
+        "weight": 0.7,
+        "image": "book.png"
     },
     {
         "id": "11",
@@ -115,9 +115,9 @@
     },
     {
         "id": "20",
-        "object": "Tasse",
-        "weight": 0.3,
-        "image": "cup.png"
+        "object": "Toaster",
+        "weight": 1.7,
+        "image": "toaster.png"
     },
     {
         "id": "21",

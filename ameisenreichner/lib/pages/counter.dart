@@ -44,91 +44,79 @@ class _CounterState extends State<Counter> {
       backgroundColor: AppColor.appLightBrown,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(top: 20),
-              child: Padding(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Wie viele",
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                          fontSize: 50, fontWeight: FontWeight.w600),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+              Image.asset(
+                '${AppValues.assetString}ant.png',
+                height: 150,
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Wie viele",
+                  "braucht es für",
                   style: GoogleFonts.inter(
-                    textStyle:
-                        const TextStyle(fontSize: 50, fontWeight: FontWeight.w600),
+                    textStyle: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   textAlign: TextAlign.center,
                 ),
               ),
-            ),
-            Image.asset(
-              '${AppValues.assetString}ant.png',
-              height: 150,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "braucht es für",
-                style: GoogleFonts.inter(
-                  textStyle: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20),
-              child: TextFormField(
-                controller: _controller,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Gewicht in Kilogramm',
-                  labelStyle: GoogleFonts.inter(
-                    textStyle: TextStyle(
-                      color: AppColor.appBrown,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(25, 20, 25, 0),
+                child: TextFormField(
+                  controller: _controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'Gewicht in Kilogramm',
+                    labelStyle: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                        color: AppColor.appBrown,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: AppColor.appBrown, width: 2.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: AppColor.appBrown, width: 2.0),
                     ),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppColor.appBrown, width: 2.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppColor.appBrown, width: 2.0),
-                  ),
                 ),
-              ),
-            ),
-            const SizedBox(
-                height:
-                    20), // Fügt einen Abstand zwischen dem Input Field und dem Text-Widget hinzu
-            _controller.text.isNotEmpty
-                ? Column(
-                    children: [
-                      FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          '${calcAnts(_controller.text)}',
-                          style: GoogleFonts.inter(
-                            textStyle: const TextStyle(fontSize: 100),
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+              ), // Fügt einen Abstand zwischen dem Input Field und dem Text-Widget hinzu
+              _controller.text.isNotEmpty
+                  ? FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        '${calcAnts(_controller.text)}',
+                        style: GoogleFonts.inter(
+                          textStyle: const TextStyle(fontSize: 100),
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      //image
-                      Image.asset(
-                        '${AppValues.assetString}ant.png',
-                        width: 200,
-                        height: 200,
-                      ),
-                    ],
-                  )
-                : Container()
-          ],
+                    )
+                  : Container()
+            ],
+          ),
         ),
       ),
     );

@@ -1,30 +1,30 @@
 [
     {
-        "date": "2023-10-02",
+        "date": "2023-10-04",
         "object": "Katze",
         "weight": 5.5,
         "image": "cat.png"
     },
     {
-        "date": "2023-10-03",
+        "date": "2023-10-05",
         "object": "Sofa",
         "weight": 70,
         "image": "sofa.png"
     },
     {
-        "date": "2023-10-04",
+        "date": "2023-10-06",
         "object": "Fernseher",
         "weight": 20,
         "image": "tv.png"
     },
     {
-        "date": "2023-10-05",
+        "date": "2023-10-07",
         "object": "Teller voll Nudeln",
         "weight": 0.5,
         "image": "pasta.png"
     },
     {
-        "date": "2023-10-06",
+        "date": "2023-10-08",
         "object": "Flugzeug",
         "weight": 100000,
         "image": "plane.png"
