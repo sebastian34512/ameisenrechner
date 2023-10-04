@@ -5,6 +5,7 @@ import 'package:ameisenreichner/pages/counter.dart';
 import 'package:ameisenreichner/widgets/guessPage.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 import 'dart:html' as html;
 
@@ -29,7 +30,6 @@ class _ChallengeState extends State<Challenge> {
     setState(() {
       todaysChallenge = getCurrentChallenge(loadChallengesFromJson(jsonString));
     });
-    debugPrint("challenge loaded");
   }
 
   @override
@@ -44,37 +44,6 @@ class _ChallengeState extends State<Challenge> {
     super.didChangeDependencies();
     _getGuidFromLocalStorage();
   }
-
-  // Future<void> _getDeviceId() async {
-  //   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  //   if (Theme.of(context).platform == TargetPlatform.android) {
-  //     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-  //     debugPrint("android serialnumber: ${androidInfo.serialNumber}");
-  //     debugPrint("android version: ${androidInfo.version}");
-  //     debugPrint("android fingerprint: ${androidInfo.fingerprint}");
-  //     debugPrint("android data: ${androidInfo.data}");
-  //     debugPrint("android: ${androidInfo}");
-  //     setState(() {
-  //       deviceId = "android";
-  //     });
-  //   } else if (Theme.of(context).platform == TargetPlatform.iOS) {
-  //     IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-  //     setState(() {
-  //       deviceId = "ios";
-  //     });
-  //   } else if (Theme.of(context).platform == TargetPlatform.windows) {
-  //     setState(() {
-  //       deviceId = 'test5'; //'windows_device_id';
-  //     });
-  //   } else {
-  //     // Plattform nicht erkannt
-  //     setState(() {
-  //       deviceId = 'unknown_device';
-  //     });
-  //   }
-
-  //   debugPrint('Device ID: $deviceId');
-  // }
 
   void _getGuidFromLocalStorage() {
     final storedGuid = html.window.localStorage['guid'];
@@ -91,8 +60,6 @@ class _ChallengeState extends State<Challenge> {
         deviceId = newGuid;
       });
     }
-
-    debugPrint('Device ID: $deviceId');
   }
 
   Future<int> _checkIfGuessAllowed() async {
@@ -109,9 +76,10 @@ class _ChallengeState extends State<Challenge> {
         switch (dioError.response!.statusCode) {
           case 500:
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 behavior: SnackBarBehavior.floating,
-                content: Text('Es ist ein Fehler aufgetreten.'),
+                content: Text('Es ist ein Fehler aufgetreten.',
+                    style: GoogleFonts.inter()),
               ),
             );
           default:
@@ -131,9 +99,10 @@ class _ChallengeState extends State<Challenge> {
   Future<Widget> reactToStatusCode() async {
     int code = await _checkIfGuessAllowed();
     if (todaysChallenge == null) {
-      return const Center(
+      return Center(
         child: Text(
-            "Heute leider keine Challenge verfügbar, versuche es morgen wieder!"),
+            "Heute leider keine Challenge verfügbar, versuche es morgen wieder!",
+            style: GoogleFonts.inter()),
       );
     }
     switch (code) {

@@ -4,6 +4,7 @@ import 'package:ameisenreichner/models/challengeItem.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GuessPage extends StatefulWidget {
   final ChallengeItem todaysChallenge;
@@ -55,17 +56,19 @@ class _GuessPageState extends State<GuessPage> {
         switch (dioError.response!.statusCode) {
           case 403:
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 behavior: SnackBarBehavior.floating,
-                content: Text('Du hast bereits geraten.'),
+                content: Text('Du hast bereits geraten.',
+                    style: GoogleFonts.inter()),
               ),
             );
             break;
           case 500:
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 behavior: SnackBarBehavior.floating,
-                content: Text('Es ist ein Fehler aufgetreten.'),
+                content: Text('Es ist ein Fehler aufgetreten.',
+                    style: GoogleFonts.inter()),
               ),
             );
           default:
@@ -88,84 +91,93 @@ class _GuessPageState extends State<GuessPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.brown.shade50,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 50.0),
-                child: Center(
-                  child: Text(
-                    'Tägliche Herausforderung',
-                    style: TextStyle(fontSize: 30),
+      backgroundColor: Colors.brown.shade50,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 50.0),
+              child: Center(
+                child: Text(
+                  'Tägliche Herausforderung',
+                  style: GoogleFonts.inter(
+                    textStyle: TextStyle(fontSize: 30),
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: Text(
-                  'Wie viele Ameisen braucht es für',
-                  style: TextStyle(fontSize: 20),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10.0),
+              child: Text(
+                'Wie viele Ameisen braucht es für',
+                style: GoogleFonts.inter(
+                  textStyle: TextStyle(fontSize: 20),
                 ),
               ),
-              Image.asset(
-                "${AppValues.assetString}collection_images/${widget.todaysChallenge.image}",
-                fit: BoxFit.cover,
-              ),
-              !_isGuessAllowed
-                  ? const Text("Du hast bereits geraten.")
-                  : Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 25.0, right: 25.0, bottom: 25),
-                          child: TextFormField(
-                            controller: _controller,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              labelText: 'Ameisen',
-                              labelStyle: TextStyle(
+            ),
+            Image.asset(
+              "${AppValues.assetString}collection_images/${widget.todaysChallenge.image}",
+              fit: BoxFit.cover,
+            ),
+            !_isGuessAllowed
+                ? Text("Du hast bereits geraten.", style: GoogleFonts.inter())
+                : Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 25.0, right: 25.0, bottom: 25),
+                        child: TextFormField(
+                          controller: _controller,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            labelText: 'Ameisen',
+                            labelStyle: GoogleFonts.inter(
+                              textStyle: TextStyle(
                                 color: AppColor.appBrown,
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColor.appBrown, width: 2.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: AppColor.appBrown, width: 2.0),
-                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: AppColor.appBrown, width: 2.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: AppColor.appBrown, width: 2.0),
                             ),
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 25),
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColor.appBrown,
-                              ),
-                              onPressed: () {
-                                _sendRateRequest(_controller.text.isNotEmpty
-                                    ? int.parse(_controller.text)
-                                    : 0);
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text(
-                                  "Rate!",
-                                  style: TextStyle(
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 25),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColor.appBrown,
+                            ),
+                            onPressed: () {
+                              _sendRateRequest(_controller.text.isNotEmpty
+                                  ? int.parse(_controller.text)
+                                  : 0);
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                "Rate!",
+                                style: GoogleFonts.inter(
+                                  textStyle: TextStyle(
                                       fontSize: 20,
                                       color: AppColor.appLightBrown),
                                 ),
-                              )),
-                        )
-                      ],
-                    )
-            ],
-          ),
-        ));
+                              ),
+                            )),
+                      )
+                    ],
+                  )
+          ],
+        ),
+      ),
+    );
   }
 }

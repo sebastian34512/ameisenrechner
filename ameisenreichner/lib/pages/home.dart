@@ -6,6 +6,8 @@ import 'package:ameisenreichner/pages/overview.dart';
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
+import 'package:google_fonts/google_fonts.dart';
+
 class MyHomePage extends StatefulWidget {
   final int? itemId;
 
@@ -62,8 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_headings[_currentIndex],
-            style: const TextStyle(color: Colors.white)),
+        title: Text(
+          _headings[_currentIndex],
+          style: GoogleFonts.inter(textStyle: TextStyle(color: Colors.white)),
+        ),
         backgroundColor: AppColor.appBrown,
         automaticallyImplyLeading: false,
       ),

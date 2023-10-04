@@ -1,6 +1,7 @@
 import 'package:ameisenreichner/constants/colors.dart';
 import 'package:ameisenreichner/constants/values.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 int calcAnts(String number) {
   double ants = double.tryParse(number) ?? -1;
@@ -43,28 +44,61 @@ class _CounterState extends State<Counter> {
       backgroundColor: AppColor.appLightBrown,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                "Wie viele Ameisen braucht es für",
-                style: TextStyle(
-                  fontSize: 20,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Wie viele",
+                    style: GoogleFonts.inter(
+                      textStyle:
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.w600),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                textAlign: TextAlign.center,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Image.asset(
+                '${AppValues.assetString}ant.png',
+                height: 150,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "braucht es für",
+                  style: GoogleFonts.inter(
+                    textStyle: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20),
               child: TextFormField(
                 controller: _controller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: 'Gewicht in Kilogramm',
-                  labelStyle: TextStyle(
-                    color: AppColor.appBrown,
+                  labelStyle: GoogleFonts.inter(
+                    textStyle: TextStyle(
+                      color: AppColor.appBrown,
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide:
@@ -87,7 +121,9 @@ class _CounterState extends State<Counter> {
                         fit: BoxFit.scaleDown,
                         child: Text(
                           '${calcAnts(_controller.text)}',
-                          style: const TextStyle(fontSize: 100),
+                          style: GoogleFonts.inter(
+                            textStyle: TextStyle(fontSize: 100),
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),

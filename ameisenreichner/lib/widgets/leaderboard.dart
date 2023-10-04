@@ -3,6 +3,7 @@ import 'package:ameisenreichner/models/challengeItem.dart';
 import 'package:ameisenreichner/pages/challenge.dart';
 import 'package:ameisenreichner/pages/counter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Leaderboard extends StatelessWidget {
   final bool hasGuessed;
@@ -25,12 +26,14 @@ class Leaderboard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "Du hast die heutige Herausforderung bereits gelöst!",
-                      style: TextStyle(
-                        fontSize: 20,
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -39,8 +42,10 @@ class Leaderboard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 50.0),
                     child: Text(
                       "Du bist auf Platz $place!",
-                      style: const TextStyle(
-                        fontSize: 20,
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -49,8 +54,10 @@ class Leaderboard extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Die Lösung war ${calcAnts(todaysChallenge.weight.toString())} Ameisen. Dein Tipp war $guess Ameisen.",
-                      style: const TextStyle(
-                        fontSize: 20,
+                      style: GoogleFonts.inter(
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -62,10 +69,12 @@ class Leaderboard extends StatelessWidget {
                 ],
               ),
             )
-          : const Center(
+          : Center(
               child: Text(
                 "Du hast die heutige Herausforderung verpasst, schau morgen wieder vorbei!",
-                style: TextStyle(fontSize: 20),
+                style: GoogleFonts.inter(
+                  textStyle: TextStyle(fontSize: 20),
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

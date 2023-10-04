@@ -5,6 +5,7 @@ import 'package:ameisenreichner/constants/values.dart';
 import 'package:ameisenreichner/models/item.dart';
 import 'package:ameisenreichner/pages/counter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Overview extends StatefulWidget {
   final int? itemId;
@@ -44,6 +45,17 @@ class _OverviewState extends State<Overview> {
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Suche',
+                labelStyle: GoogleFonts.inter(
+                  textStyle: TextStyle(
+                    color: AppColor.appBrown,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColor.appBrown, width: 2.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColor.appBrown, width: 2.0),
+                ),
               ),
               onChanged: searchItem,
             ),
