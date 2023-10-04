@@ -1,6 +1,5 @@
 import 'package:ameisenreichner/constants/values.dart';
 import 'package:ameisenreichner/models/challengeItem.dart';
-import 'package:ameisenreichner/pages/challenge.dart';
 import 'package:ameisenreichner/pages/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,11 +26,11 @@ class Leaderboard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(
                       "Du hast die heutige Herausforderung bereits gelöst!",
                       style: GoogleFonts.inter(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 20,
                         ),
                       ),
@@ -43,7 +42,7 @@ class Leaderboard extends StatelessWidget {
                     child: Text(
                       "Du bist auf Platz $place!",
                       style: GoogleFonts.inter(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 20,
                         ),
                       ),
@@ -55,7 +54,7 @@ class Leaderboard extends StatelessWidget {
                     child: Text(
                       "Die Lösung war ${calcAnts(todaysChallenge.weight.toString())} Ameisen. Dein Tipp war $guess Ameisen.",
                       style: GoogleFonts.inter(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           fontSize: 20,
                         ),
                       ),
@@ -73,7 +72,7 @@ class Leaderboard extends StatelessWidget {
               child: Text(
                 "Du hast die heutige Herausforderung verpasst, schau morgen wieder vorbei!",
                 style: GoogleFonts.inter(
-                  textStyle: TextStyle(fontSize: 20),
+                  textStyle: const TextStyle(fontSize: 20),
                 ),
                 textAlign: TextAlign.center,
               ),

@@ -96,22 +96,22 @@ class _GuessPageState extends State<GuessPage> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 50.0),
+              padding: const EdgeInsets.only(top: 50.0),
               child: Center(
                 child: Text(
                   'Tägliche Herausforderung',
                   style: GoogleFonts.inter(
-                    textStyle: TextStyle(fontSize: 30),
+                    textStyle: const TextStyle(fontSize: 30),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(top: 10.0),
               child: Text(
                 'Wie viele Ameisen braucht es für',
                 style: GoogleFonts.inter(
-                  textStyle: TextStyle(fontSize: 20),
+                  textStyle: const TextStyle(fontSize: 20),
                 ),
               ),
             ),

@@ -2,21 +2,21 @@ import 'package:ameisenreichner/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (context) => MyHomePage(),
-        '/overview/1': (context) => MyHomePage(itemId: 1),
-        '/overview/2': (context) => MyHomePage(itemId: 2),
-        '/overview/3': (context) => MyHomePage(itemId: 3),
+        '/': (context) => const MyHomePage(),
+        '/overview/1': (context) => const MyHomePage(itemId: 1),
+        '/overview/2': (context) => const MyHomePage(itemId: 2),
+        '/overview/3': (context) => const MyHomePage(itemId: 3),
       },
       //outerConfig: _router,
       title: 'Ameisenrechner',

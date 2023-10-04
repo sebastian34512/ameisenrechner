@@ -48,14 +48,14 @@ class _CounterState extends State<Counter> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Wie viele",
                   style: GoogleFonts.inter(
                     textStyle:
-                        TextStyle(fontSize: 50, fontWeight: FontWeight.w600),
+                        const TextStyle(fontSize: 50, fontWeight: FontWeight.w600),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -66,11 +66,11 @@ class _CounterState extends State<Counter> {
               height: 150,
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 "braucht es für",
                 style: GoogleFonts.inter(
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w400,
                   ),
@@ -113,7 +113,7 @@ class _CounterState extends State<Counter> {
                         child: Text(
                           '${calcAnts(_controller.text)}',
                           style: GoogleFonts.inter(
-                            textStyle: TextStyle(fontSize: 100),
+                            textStyle: const TextStyle(fontSize: 100),
                           ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,

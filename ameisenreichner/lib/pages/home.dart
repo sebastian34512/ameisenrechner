@@ -32,9 +32,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     _children = [
       Overview(itemId: _itemId),
-      Counter(),
-      Challenge(),
-      Info(),
+      const Counter(),
+      const Challenge(),
+      const Info(),
     ];
     super.initState();
   }
@@ -51,9 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
       _itemId = null;
       _children = [
         Overview(itemId: _itemId),
-        Counter(),
-        Challenge(),
-        Info(),
+        const Counter(),
+        const Challenge(),
+        const Info(),
       ];
       html.window.history.pushState(null, 'home', '#');
       _currentIndex = index;
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(
           _headings[_currentIndex],
-          style: GoogleFonts.inter(textStyle: TextStyle(color: Colors.white)),
+          style: GoogleFonts.inter(textStyle: const TextStyle(color: Colors.white)),
         ),
         backgroundColor: AppColor.appBrown,
         automaticallyImplyLeading: false,

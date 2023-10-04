@@ -17,7 +17,7 @@ class Overview extends StatefulWidget {
 
 class _OverviewState extends State<Overview> {
   late Future<List<Item>> overviewItems;
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -43,7 +43,7 @@ class _OverviewState extends State<Overview> {
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: 'Suche',
                 labelStyle: GoogleFonts.inter(
                   textStyle: TextStyle(

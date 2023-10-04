@@ -66,7 +66,7 @@ class _ChallengeState extends State<Challenge> {
     try {
       //await _getDeviceId();
       var response =
-          await Dio().get('https://data.ingoapp.at/rate/${deviceId}');
+          await Dio().get('https://data.ingoapp.at/rate/$deviceId');
       debugPrint(response.statusCode.toString());
       //${deviceId}');
       return response.statusCode ?? 0;
@@ -116,7 +116,7 @@ class _ChallengeState extends State<Challenge> {
       case 202:
         //Rangliste berechnen
         var response =
-            await Dio().get('https://data.ingoapp.at/rate/${deviceId}');
+            await Dio().get('https://data.ingoapp.at/rate/$deviceId');
         for (var guess in response.data['guesses']) {
           guesses.add(Guess(
               device_id: "",
